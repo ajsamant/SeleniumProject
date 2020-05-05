@@ -1,0 +1,47 @@
+package smartbytes.opencart;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class WorkingWithTextBox {
+
+	public static void main(String[] args) {
+
+		String title = "Register Account";
+		String actualTitle = " ";
+
+		// 1. Open URL of Register
+		String url = "https://smartbytes.v-logics.com/ocart/index.php?route=account/register";
+
+		System.out.println("Registering Driver");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ajink\\Documents\\selenium\\chromedriver.exe");
+
+		// Create instance of chrome
+		WebDriver driver = new ChromeDriver();
+
+		System.out.println("Opening URL: " + url);
+		driver.get(url);
+
+		actualTitle = driver.getTitle();
+		System.out.println("Page Title is: " + actualTitle);
+
+		if (actualTitle.equals(title)) {
+			System.out.println("Title Matched");
+		} else {
+			System.out.println("Title did not matched");
+		}
+
+		// 2. Enter First Name, Last Name, Email, Telephone.
+		// Enter first name
+		driver.findElement(By.name("firstname")).sendKeys("Kumar");
+		// Enter last name
+		driver.findElement(By.name("lastname")).sendKeys("Jaan");
+		// Enter Email
+		driver.findElement(By.name("email")).sendKeys("k.jaan@yum.com");
+		// Enter telephone
+		driver.findElement(By.name("telephone")).sendKeys("1234567");
+
+	}
+
+}
